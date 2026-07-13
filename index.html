@@ -355,6 +355,25 @@
     .site-footer p { margin: 0 0 6px; }
     .site-footer p:last-child { margin: 0; }
 
+    /* ===== Botón de volver arriba ===== */
+    .to-top {
+      position: fixed; right: 22px; bottom: 22px; z-index: 35;
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 46px; height: 46px;
+      border: 1px solid var(--border); border-radius: 14px;
+      background: var(--surface); color: var(--primary-strong);
+      box-shadow: var(--shadow); cursor: pointer;
+      opacity: 0; visibility: hidden; transform: translateY(10px);
+      transition: opacity .2s ease, transform .2s ease, visibility .2s, border-color .15s ease, background .15s ease;
+    }
+    .to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .to-top:hover { border-color: var(--primary); background: var(--primary-soft); }
+    .to-top svg { width: 22px; height: 22px; }
+
+    @media (max-width: 560px) {
+      .to-top { right: 14px; bottom: 14px; }
+    }
+
     /* ===== Toast ===== */
     .toast {
       position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%) translateY(12px);
@@ -451,6 +470,7 @@
       </div>
     </div>
   </header>
+
   <section class="hero">
     <div class="wrap">
       <p class="eyebrow">Guía de configuración</p>
@@ -475,7 +495,6 @@
     <!-- ===== 1. Las piezas ===== -->
     <section id="piezas" class="section" aria-labelledby="piezas-title">
       <h2 id="piezas-title"><span class="num">1.</span> Qué es cada cosa</h2>
-      <p class="section-intro">La mayoría de los problemas de configuración nacen del mismo malentendido, así que conviene aclararlo desde el principio. Aquí intervienen dos programas distintos, no uno.</p>
 
       <div class="cards">
         <article class="card">
@@ -492,7 +511,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
             El motor AceStream <em>(engine)</em>
           </h3>
-          <p><span class="card-label">Qué es</span>Un programa independiente. Puede ser AceStream Media en Windows, el paquete snap en Ubuntu, la app Ace Stream en Android, AceServe o un contenedor Docker.</p>
+          <p><span class="card-label">Qué es</span>Puede ser AceStream Media en Windows, el paquete snap en Ubuntu, la app Ace Stream en Android, AceServe o un contenedor Docker.</p>
           <p><span class="card-label">Qué hace</span>Hace todo el trabajo. Se conecta a la red P2P, descarga el contenido de otros usuarios, lo reensambla y lo sirve como vídeo convencional por HTTP en <code>http://IP:6878/...</code></p>
         </article>
 
@@ -778,7 +797,7 @@
 
     <!-- ===== 5. Ajustes ===== -->
     <section id="ajustes" class="section" aria-labelledby="ajustes-title">
-      <h2 id="ajustes-title"><span class="num">5.</span> Los ajustes de EKHorus, uno a uno</h2>
+      <h2 id="ajustes-title"><span class="num">5.</span> Los ajustes de EKHorus</h2>
       <p class="section-intro">Qué hace cada opción y cuándo conviene tocarla. Van en el mismo orden en que aparecen en pantalla, con los tres más usados arriba del todo.</p>
 
       <div class="table-wrap">
@@ -1100,7 +1119,7 @@
           <span>¿Hace falta VPN?</span>
         </summary>
         <div class="guide-body">
-          <p>EKHorus no la incluye ni la gestiona. En AceStream, como en cualquier red P2P, la IP del usuario es visible para el resto de participantes, y quien ve un canal también lo está reemitiendo. En España esto ha dejado de ser un riesgo teórico; LaLiga cuenta con autorización judicial para pedir a las operadoras la identidad de las IPs que detecta compartiendo sus partidos, y ya ha enviado cartas a usuarios. Con esos datos, la decisión es de cada uno.</p>
+          <p>EKHorus no la incluye ni la gestiona. En AceStream, como en cualquier red P2P, la IP del usuario es visible para el resto de participantes, y quien ve un canal también lo está reemitiendo. Con ese dato, la decisión es de cada uno.</p>
         </div>
       </details>
     </section>
@@ -1246,6 +1265,13 @@
     </div>
   </footer>
 
+  <button id="to-top" class="to-top" type="button" aria-label="Volver arriba" title="Volver arriba">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="12" y1="19" x2="12" y2="6"/>
+      <polyline points="5 13 12 6 19 13"/>
+    </svg>
+  </button>
+
   <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
 
   <script>
@@ -1280,6 +1306,7 @@
       initPalette();
       initA11y();
       initCopy();
+      initToTop();
     }
 
     if (document.readyState === 'loading') {
@@ -1402,6 +1429,22 @@
 
     document.addEventListener('click', closeAllPopovers);
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeAllPopovers(); });
+
+    // --- Volver arriba ---
+
+    function initToTop() {
+      const btn = $('#to-top');
+
+      // El boton solo aparece cuando ya se ha bajado una pantalla.
+      const sync = () => btn.classList.toggle('show', window.scrollY > window.innerHeight * 0.6);
+      sync();
+      window.addEventListener('scroll', sync, { passive: true });
+
+      btn.addEventListener('click', () => {
+        const suave = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: suave ? 'smooth' : 'auto' });
+      });
+    }
 
     // --- Copiar (delegado) ---
 
