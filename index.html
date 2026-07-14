@@ -255,8 +255,7 @@
       font-size: .74rem; font-weight: 700; color: var(--hero-accent);
     }
     .hero h1 { margin: 0 0 14px; font-size: clamp(1.9rem, 5vw, 2.8rem); font-weight: 800; letter-spacing: -.025em; line-height: 1.08; color: #fff; }
-    .hero-sub { margin: 0 auto; max-width: 720px; color: rgba(255, 255, 255, .85); font-size: 1.04rem; }
-    .hero-sub strong { color: #fff; }
+    .hero-sub { margin: 0 auto; max-width: 660px; color: rgba(255, 255, 255, .85); font-size: 1.04rem; }
 
     /* ===== Índice ===== */
     .toc { display: flex; flex-wrap: wrap; justify-content: center; gap: 9px; margin-top: 28px; }
@@ -475,6 +474,7 @@
     <div class="wrap">
       <p class="eyebrow">Guía de configuración</p>
       <h1>EKHorus, AceStream y AceServe</h1>
+      <p class="hero-sub">Guía completa para montar todo el sistema de streaming en cualquier aparato, entender qué hace cada cosa y conocer las opciones para sacarle el máximo partido y saber qué hacer cuando algo falla.</p>
       <nav class="toc" aria-label="Índice de la guía">
         <a href="#piezas">Las piezas</a>
         <a href="#escenarios">Escenarios</a>
@@ -499,11 +499,11 @@
       <div class="cards">
         <article class="card">
           <h3>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
-            El enlace AceStream
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
+            EKHorus
           </h3>
-          <p><span class="card-label">Qué es</span>Un código de 40 caracteres hexadecimales (<code>a0270364634d9c49279ba61ae3d8467809fb7095</code>), a veces escrito como <code>acestream://a027...</code>. También puede ser un <code>infohash</code>, un enlace <code>magnet:</code> o un archivo <code>.torrent</code>.</p>
-          <p><span class="card-label">Qué hace</span>Identifica el contenido dentro de la red P2P. Por sí solo no es reproducible; no apunta a ningún servidor de vídeo.</p>
+          <p><span class="card-label">Qué es</span>El addon de Kodi (basado en Horus) adaptado a EspaKodi.</p>
+          <p><span class="card-label">Qué hace</span>No reproduce nada por sí mismo y no incluye ningún canal. Actúa de intermediario. Pide el enlace al motor, espera a que el stream arranque, pasa el vídeo resultante al reproductor de Kodi y muestra las estadísticas.</p>
         </article>
 
         <article class="card">
@@ -512,20 +512,20 @@
             El motor AceStream <em>(engine)</em>
           </h3>
           <p><span class="card-label">Qué es</span>Puede ser AceStream Media en Windows, el paquete snap en Ubuntu, la app Ace Stream en Android, AceServe o un contenedor Docker.</p>
-          <p><span class="card-label">Qué hace</span>Hace todo el trabajo. Se conecta a la red P2P, descarga el contenido de otros usuarios, lo reensambla y lo sirve como vídeo convencional por HTTP en <code>http://IP:6878/...</code></p>
+          <p><span class="card-label">Qué hace</span>Hace todo el trabajo. Se conecta a la red P2P (<em>peer to peer</em>, red entre usuarios, sin servidor central), descarga el contenido de otros usuarios, lo reensambla y lo sirve como vídeo convencional por HTTP en <code>http://IP:6878/...</code></p>
         </article>
 
         <article class="card">
           <h3>
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="6 3 20 12 6 21 6 3"/></svg>
-            EKHorus
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+            El enlace AceStream
           </h3>
-          <p><span class="card-label">Qué es</span>El addon de Kodi (basado en Horus) adaptado a EspaKodi.</p>
-          <p><span class="card-label">Qué hace</span>No reproduce nada por sí mismo y no incluye ningún canal. Actúa de intermediario. Pide el enlace al motor, espera a que el stream arranque, pasa el vídeo resultante al reproductor de Kodi y muestra las estadísticas.</p>
+          <p><span class="card-label">Qué es</span>Un código de 40 caracteres hexadecimales (<code>a0270364634d9c49279ba61ae3d8467809fb7095</code>), a veces escrito como <code>acestream://a027...</code>. También puede ser un <code>infohash</code>, un enlace <code>magnet:</code> o un archivo <code>.torrent</code>.</p>
+          <p><span class="card-label">Qué hace</span>Identifica el contenido dentro de la red P2P (<em>peer to peer</em>, red entre usuarios, sin servidor central). Por sí solo no es reproducible; no apunta a ningún servidor de vídeo.</p>
         </article>
       </div>
 
-      <p>El motor convierte un enlace P2P en una dirección de vídeo normal, y EKHorus se comunica con él por HTTP. Por eso EKHorus necesita saber en qué dirección IP y en qué puerto está escuchando el motor. Es lo único que necesita saber de él. Si en esa dirección responde un motor, todo funciona. Si no responde nadie, aparece el error <strong>"Engine no iniciado"</strong>.</p>
+      <p>El motor convierte un enlace P2P (<em>peer to peer</em>, red entre usuarios, sin servidor central) en una dirección de vídeo normal, y EKHorus se comunica con él por HTTP. Por eso EKHorus necesita saber en qué dirección IP y en qué puerto está escuchando el motor. Es lo único que necesita saber de él. Si en esa dirección responde un motor, todo funciona. Si no responde nadie, aparece el error <strong>"Engine no iniciado"</strong>.</p>
       <p>Ese motor lo puede instalar y arrancar el propio EKHorus, y entonces se habla de motor interno, o puede estar ya en marcha por su cuenta, y entonces es un motor externo. Cuál de los dos toca no se elige, depende del aparato, y la sección 3 lo explica en detalle.</p>
 
       <details class="guide-item">
@@ -551,7 +551,7 @@
     <!-- ===== 2. Escenarios ===== -->
     <section id="escenarios" class="section" aria-labelledby="escenarios-title">
       <h2 id="escenarios-title"><span class="num">2.</span> Lugares donde se puede instalar y formas de usarlo</h2>
-      <p class="section-intro">Ocho montajes habituales, empezando por Android, que es el más extendido. Cada uno se despliega por separado. Con seguir los pasos del que corresponda basta para tenerlo funcionando; las secciones 3 y 4 explican el porqué de cada cosa, y son las que hay que leer cuando algo no sale a la primera.</p>
+      <p class="section-intro">Las secciones 3 y 4 explican el porqué de cada cosa, y son las que hay que leer cuando algo no sale a la primera.</p>
 
       <details class="guide-item" open>
         <summary>
@@ -911,7 +911,7 @@
           <li><strong>EspaKodi Warp</strong>.</li>
         </ul>
         <p>Eliges la carpeta de destino cada vez. La descarga muestra el tamaño y se puede cancelar. Al terminar, en Android se ofrece instalar directamente; si el sistema no lo permite, el addon da las instrucciones para hacerlo desde un gestor de archivos y un acceso directo a los ajustes de orígenes desconocidos, que es el permiso que Android pide la primera vez.</p>
-        <div class="callout">Son APK de 32 bits, y es a propósito. Casi cualquier Android, aunque sea de 64 bits, los instala sin problema, y son los que funcionan en los aparatos a los que va dirigido este menú. Solo algunos equipos muy recientes han dejado de admitirlos, y la forma de saberlo es probar. Si el sistema no deja instalarlos, hay que buscar las versiones de 64 bits, a las que enlaza el propio aviso del menú.</div>
+        <div class="callout">Solo están esas cuatro, y es a propósito. Son las que hacen falta en un Fire TV o un TV box, donde no vienen instaladas y conseguirlas es un suplicio, porque todo se hace con un mando y no hay forma cómoda de escribir una dirección ni de pasar un fichero. En un móvil o en un PC este menú no tendría sentido, porque allí se instala cualquier cosa desde la tienda o el navegador. Y son APK de 32 bits porque es lo que aceptan casi todos estos aparatos. El Fire TV Stick lleva procesador de 64 bits, pero su sistema corre en 32, y en la mayoría de los TV box pasa lo mismo, porque así gastan menos memoria. La excepción son unos pocos equipos muy recientes, que ya solo aceptan los de 64 bits. Si el tuyo no deja instalarlos, lo primero es descartar que falte el permiso de orígenes desconocidos, que es la causa más común. Si el permiso está dado y aun así los rechaza, entonces sí, toca la versión de 64 bits. La dirección donde encontrarla la da el propio menú, en la entrada de aviso que abre el texto explicativo.</div>
       </div>
 
       <div class="panel">
@@ -1016,7 +1016,7 @@
         </table>
       </div>
 
-      <p>El log de Kodi es la fuente definitiva. Todo lo que hace el addon queda registrado con la etiqueta <code>[script.module.horus]</code>. Está en la carpeta de Kodi<code>/kodi.log</code>.</p>
+      <p>El log de Kodi es la fuente definitiva. Todo lo que hace el addon queda registrado con la etiqueta <code>[script.module.horus]</code>. El archivo se llama <code>kodi.log</code>. En Windows está en <code>%APPDATA%\Kodi</code>, en Linux en <code>$HOME/.kodi</code> (con Flatpak, en <code>~/.var/app/tv.kodi.Kodi/data/temp</code>), en LibreELEC y CoreELEC en <code>/storage/.kodi</code>, y en Android en <code>Android/data/org.xbmc.kodi/files/.kodi/temp</code>, una carpeta oculta a la que las versiones recientes del sistema no dejan entrar con cualquier gestor de archivos. Por eso, en un televisor o un TV box lo práctico es leerlo con loiolog, que está en <em>EspaKodi Addons</em>.</p>
     </section>
 
     <!-- ===== 8. FAQ ===== -->
@@ -1119,7 +1119,9 @@
           <span>¿Hace falta VPN?</span>
         </summary>
         <div class="guide-body">
-          <p>EKHorus no la incluye ni la gestiona. En AceStream, como en cualquier red P2P, la IP del usuario es visible para el resto de participantes, y quien ve un canal también lo está reemitiendo. Con ese dato, la decisión es de cada uno.</p>
+          <p>EKHorus no la incluye ni la gestiona. En AceStream, como en cualquier red P2P, la IP del usuario es visible para el resto de participantes, y quien ve un canal también lo está reemitiendo.</p>
+          <p>Además, en España las operadoras aplican bloqueos durante las emisiones deportivas. Se hacen por direcciones IP, y como una sola IP suele dar servicio a miles de webs, porque así funcionan los servicios de alojamiento en la nube, el corte se lleva por delante páginas que no tienen nada que ver. Es habitual que durante un partido dejen de cargar buscadores, listas y sitios de lo más corriente.</p>
+          <p>En la práctica esto significa que hay días en que una fuente no responde y no es culpa del addon, sino de la conexión de casa. Una VPN esquiva ese bloqueo y de paso tapa la IP en la red P2P. Con esos datos, la decisión es de cada uno.</p>
         </div>
       </details>
     </section>
